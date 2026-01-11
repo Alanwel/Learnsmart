@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartBooks AI - Learn Smarter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        * { font-family: 'Poppins', sans-serif; }
+        
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-hover { transition: all 0.3s ease; }
+        .card-hover:hover { transform: translateY(-5px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+        .tap-highlight { animation: tap-pulse 1s ease; }
+        @keyframes tap-pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+        .voice-listening { animation: voice-pulse 1.5s infinite; }
+        @keyframes voice-pulse { 0% { opacity: 1; } 50% { opacity: 0.7; } 100% { opacity: 1; } }
+    </style>
+</head>
+<body class="bg-gradient-to-b from-blue-50 to-white min-h-screen">
+    
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm py-4 px-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="gradient-bg w-12 h-12 rounded-xl flex items-center justify-center">
+                    <i class="fas fa-book-open text-white text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900">SmartBooks<span class="text-purple-600">AI</span></h1>
+                    <p class="text-xs text-gray-500">For African Youth</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex items-center gap-6">
+                    <a href="#" class="text-gray-700 hover:text-purple-600 font-medium">Home</a>
+                    <a href="#textbooks" class="text-gray-700 hover:text-purple-600 font-medium">Textbooks</a>
+                    <a href="#how-it-works" class="text-gray-700 hover:text-purple-600 font-medium">How It Works</a>
+                    <a href="#features" class="text-gray-700 hover:text-purple-600 font-medium">Features</a>
+               
+                </div>
+                
+                <div class="flex items-center gap-2">
+                    <button id="lang-btn" class="px-4 py-2 border border-gray-300 rounded-full text-gray-700 text-sm font-medium flex items-center gap-2">
+                        <i class="fas fa-globe-africa"></i> English
+                        <i class="fas fa-chevron-down text-xs"></i>
+                    </button>
+                    <button class="md:hidden text-gray-700 text-xl">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="px-6 py-12 md:py-20">
+        <div class="max-w-7xl mx-auto text-center">
+            <div class="inline-block mb-6 px-6 py-2 bg-gradient-to-r from-blue-100 to-purple-100 rounded-full">
+                <span class="text-blue-700 font-medium">📍 Made for African Students</span><p class="text-purple-800"> By Alan</p>
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl font-bold text-gray-900 mb-6 leading-tight">
+                Your Personal <span class="text-transparent bg-clip-text gradient-bg">AI Tutor</span> in Every Textbook
+            </h1>
+            
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-10">
+                Tap any paragraph. Ask questions in your language. Get instant explanations. Works perfectly offline.
+            </p>
+            
+            <div class="flex flex-col md:flex-row gap-4 justify-center mb-16">
+                <button id="get-started-btn" class="gradient-bg text-white px-8 py-4 rounded-xl text-lg font-semibold shadow-lg hover:shadow-xl transition flex items-center justify-center gap-3">
+                    <i class="fas fa-play"></i> Start Learning Free
+                </button>
+                <button class="bg-white text-gray-800 px-8 py-4 rounded-xl text-lg font-semibold border-2 border-gray-200 hover:border-purple-400 transition flex items-center justify-center gap-3">
+                    <i class="fas fa-video"></i> Watch Demo
+                </button>
+            </div>
+            
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+                <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="text-3xl font-bold text-purple-600">10K+</div>
+                    <div class="text-gray-600">Students Learning</div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="text-3xl font-bold text-blue-600">500+</div>
+                    <div class="text-gray-600">Textbooks</div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="text-3xl font-bold text-green-600">5</div>
+                    <div class="text-gray-600">Local Languages</div>
+                </div>
+                <div class="bg-white p-6 rounded-2xl shadow-sm">
+                    <div class="text-3xl font-bold text-orange-600">100%</div>
+                    <div class="text-gray-600">Offline Support</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Grade Selection -->
+    <section id="textbooks" class="px-6 py-12 bg-white">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-4">Choose Your Grade & Subject</h2>
+            <p class="text-gray-600 text-center mb-10 max-w-2xl mx-auto">Curriculum-aligned content for Uganda,Nigeria, Kenya, Ghana, Rwanda, and more</p>
+            
+            <!-- Grade Tabs -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <button class="grade-tab px-6 py-3 rounded-lg bg-blue-100 text-blue-700 font-medium border-2 border-blue-200">Primary 1-3</button>
+                <button class="grade-tab px-6 py-3 rounded-lg bg-gray-100 text-gray-700 font-medium hover:bg-blue-50">Primary 4-6</button>
+                <button class="grade-tab px-6 py-3 rounded-lg bg-gray-100 text-gray-700 font-medium hover:bg-blue-50">Junior Secondary</button>
+                <button class="grade-tab px-6 py-3 rounded-lg bg-gray-100 text-gray-700 font-medium hover:bg-blue-50">Senior Secondary</button>
+            </div>
+            
+            <!-- Subjects Grid -->
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+                <div class="subject-card card-hover bg-gradient-to-br from-blue-50 to-white p-6 rounded-2xl border border-blue-100 text-center cursor-pointer">
+                    <div class="w-16 h-16 gradient-bg rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-calculator text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Mathematics</h3>
+                    <p class="text-sm text-gray-600">15 textbooks available</p>
+                    <div class="mt-4 text-xs text-blue-600 font-medium">Tap to open →</div>
+                </div>
+                
+                <div class="subject-card card-hover bg-gradient-to-br from-green-50 to-white p-6 rounded-2xl border border-green-100 text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-400 to-teal-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-flask text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Science</h3>
+                    <p class="text-sm text-gray-600">12 textbooks available</p>
+                    <div class="mt-4 text-xs text-green-600 font-medium">Tap to open →</div>
+                </div>
+                
+                <div class="subject-card card-hover bg-gradient-to-br from-yellow-50 to-white p-6 rounded-2xl border border-yellow-100 text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-language text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">English</h3>
+                    <p class="text-sm text-gray-600">10 textbooks available</p>
+                    <div class="mt-4 text-xs text-yellow-600 font-medium">Tap to open →</div>
+                </div>
+                
+                <div class="subject-card card-hover bg-gradient-to-br from-purple-50 to-white p-6 rounded-2xl border border-purple-100 text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-400 to-pink-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-globe-africa text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Social Studies</h3>
+                    <p class="text-sm text-gray-600">8 textbooks available</p>
+                    <div class="mt-4 text-xs text-purple-600 font-medium">Tap to open →</div>
+                </div>
+                
+                <div class="subject-card card-hover bg-gradient-to-br from-red-50 to-white p-6 rounded-2xl border border-red-100 text-center cursor-pointer">
+                    <div class="w-16 h-16 bg-gradient-to-r from-red-400 to-pink-500 rounded-xl flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-laptop-code text-white text-2xl"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 mb-2">Computer Science</h3>
+                    <p class="text-sm text-gray-600">6 textbooks available</p>
+                    <div class="mt-4 text-xs text-red-600 font-medium">Tap to open →</div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <button class="text-blue-600 font-medium flex items-center justify-center gap-2 mx-auto">
+                    <i class="fas fa-search"></i> Browse all subjects & textbooks
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section id="how-it-works" class="px-6 py-16 bg-gradient-to-b from-white to-blue-50">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-4">How SmartBooks AI Works</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">Three simple steps to better learning</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="relative">
+                    <div class="absolute -top-4 -left-4 w-10 h-10 gradient-bg rounded-full flex items-center justify-center text-white font-bold text-lg">1</div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg h-full pt-12">
+                        <div class="w-20 h-20 bg-blue-100 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-book-reader text-blue-600 text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Open Your Textbook</h3>
+                        <p class="text-gray-600 mb-6">Choose from 500+ curriculum-aligned textbooks. Download once, use offline anytime.</p>
+                        <div class="flex items-center text-blue-600 font-medium">
+                            <span>Available offline</span>
+                            <i class="fas fa-wifi-slash ml-2"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="relative">
+                    <div class="absolute -top-4 -left-4 w-10 h-10 gradient-bg rounded-full flex items-center justify-center text-white font-bold text-lg">2</div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg h-full pt-12">
+                        <div class="w-20 h-20 bg-green-100 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-hand-point-up text-green-600 text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Tap & Ask</h3>
+                        <p class="text-gray-600 mb-6">Tap any confusing paragraph. Ask questions by text or voice in English, French, Swahili, or your local language.</p>
+                        <div class="flex items-center gap-2">
+                            <div class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm">Tap</div>
+                            <div class="px-3 py-1 bg-purple-100 text-purple-800 rounded-full text-sm">Voice</div>
+                            <div class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">Text</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="relative">
+                    <div class="absolute -top-4 -left-4 w-10 h-10 gradient-bg rounded-full flex items-center justify-center text-white font-bold text-lg">3</div>
+                    <div class="bg-white p-8 rounded-2xl shadow-lg h-full pt-12">
+                        <div class="w-20 h-20 bg-purple-100 rounded-xl flex items-center justify-center mb-6">
+                            <i class="fas fa-robot text-purple-600 text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-4">Get AI Explanation</h3>
+                        <p class="text-gray-600 mb-6">Our AI tutor explains concepts simply, gives examples, and creates quizzes to test your understanding.</p>
+                        <div class="flex items-center gap-2">
+                            <div class="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Explain</div>
+                            <div class="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm">Examples</div>
+                            <div class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm">Quiz</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Live Demo Preview -->
+    <section class="px-6 py-16 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-12">Try It Yourself</h2>
+            
+            <div class="bg-gradient-to-r from-blue-50 to-purple-50 rounded-3xl p-8 md:p-12">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Left: Textbook Preview -->
+                    <div class="bg-white p-8 rounded-2xl shadow-lg">
+                        <div class="flex justify-between items-center mb-6">
+                            <div>
+                                <h3 class="font-bold text-xl">Mathematics - Grade 5</h3>
+                                <p class="text-gray-600">Chapter 3: Fractions</p>
+                            </div>
+                            <div class="flex items-center gap-2 text-green-600">
+                                <i class="fas fa-circle text-xs"></i>
+                                <span class="text-sm">Available offline</span>
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-6">
+                            <div id="paragraph-1" class="paragraph-select p-4 rounded-lg border-2 border-transparent hover:border-blue-300 cursor-pointer transition">
+                                <p class="text-gray-800">A fraction represents a part of a whole. For example, 1/2 means one part out of two equal parts.</p>
+                            </div>
+                            
+                            <div id="paragraph-2" class="paragraph-select p-4 rounded-lg border-2 border-transparent hover:border-blue-300 cursor-pointer transition">
+                                <p class="text-gray-800">To add fractions with the same denominator, add the numerators and keep the denominator the same.</p>
+                            </div>
+                            
+                            <div id="paragraph-3" class="paragraph-select p-4 rounded-lg border-2 border-transparent hover:border-blue-300 cursor-pointer transition">
+                                <p class="text-gray-800">A mixed number has a whole number and a fraction, like 2 1/3. You can convert it to an improper fraction.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8 pt-6 border-t border-gray-200">
+                            <p class="text-sm text-gray-600 mb-4"><i class="fas fa-hand-point-up text-blue-500 mr-2"></i> Tap any paragraph above to ask AI about it</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Right: AI Tutor Chat -->
+                    <div class="bg-gray-900 text-white p-8 rounded-2xl">
+                        <div class="flex items-center gap-3 mb-6">
+                            <div class="w-12 h-12 gradient-bg rounded-full flex items-center justify-center">
+                                <i class="fas fa-robot text-xl"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-xl">AI Tutor</h3>
+                                <p class="text-blue-300 text-sm">Ask me anything about the lesson</p>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-6">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="px-4 py-2 bg-blue-800 rounded-lg">
+                                    <p>Tap a paragraph first, then ask</p>
+                                </div>
+                            </div>
+                            
+                            <div id="ai-response-demo" class="min-h-40 bg-gray-800 rounded-xl p-6">
+                                <div class="flex items-start gap-3 mb-4">
+                                    <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mt-1">
+                                        <i class="fas fa-robot text-xs"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-medium mb-1">AI Tutor</p>
+                                        <p class="text-gray-300">I'm ready to help! Tap any paragraph from the textbook, then choose a question below or use your voice.</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Quick Action Buttons -->
+                                <div class="grid grid-cols-2 gap-3 mt-6">
+                                    <button class="ai-quick-btn bg-blue-800 hover:bg-blue-700 p-3 rounded-lg text-sm transition flex items-center justify-center gap-2">
+                                        <i class="fas fa-lightbulb"></i> Explain Simply
+                                    </button>
+                                    <button class="ai-quick-btn bg-purple-800 hover:bg-purple-700 p-3 rounded-lg text-sm transition flex items-center justify-center gap-2">
+                                        <i class="fas fa-list-ol"></i> Give Example
+                                    </button>
+                                    <button class="ai-quick-btn bg-green-800 hover:bg-green-700 p-3 rounded-lg text-sm transition flex items-center justify-center gap-2">
+                                        <i class="fas fa-question-circle"></i> Quiz Me
+                                    </button>
+                                    <button id="voice-demo-btn" class="ai-quick-btn bg-red-800 hover:bg-red-700 p-3 rounded-lg text-sm transition flex items-center justify-center gap-2">
+                                        <i class="fas fa-microphone"></i> Voice Ask
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-6">
+                            <div class="flex items-center gap-3 text-sm text-gray-400">
+                                <i class="fas fa-info-circle"></i>
+                                <p>Works in English, French, Swahili, Hausa, Yoruba & more</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" class="px-6 py-16 bg-gradient-to-b from-blue-50 to-white">
+        <div class="max-w-6xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-4">Why Students Love SmartBooks</h2>
+            <p class="text-gray-600 text-center mb-12 max-w-2xl mx-auto">Designed specifically for African learning needs</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="feature-card bg-white p-6 rounded-2xl shadow-sm border border-blue-100">
+                    <div class="w-14 h-14 gradient-bg rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-wifi-slash text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">100% Offline</h3>
+                    <p class="text-gray-600 text-sm">Download textbooks once, learn anytime without internet. Perfect for low-connectivity areas.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-6 rounded-2xl shadow-sm border border-green-100">
+                    <div class="w-14 h-14 bg-gradient-to-r from-green-400 to-teal-500 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-microphone-alt text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Voice Questions</h3>
+                    <p class="text-gray-600 text-sm">Ask questions in your local language. Our AI understands accents and responds clearly.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-6 rounded-2xl shadow-sm border border-purple-100">
+                    <div class="w-14 h-14 bg-gradient-to-r from-purple-400 to-pink-500 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-graduation-cap text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Exam Ready</h3>
+                    <p class="text-gray-600 text-sm">Aligned with WAEC, KCSE, BECE ,UNEB exams. AI generates practice questions from past papers.</p>
+                </div>
+                
+                <div class="feature-card bg-white p-6 rounded-2xl shadow-sm border border-orange-100">
+                    <div class="w-14 h-14 bg-gradient-to-r from-orange-400 to-red-500 rounded-xl flex items-center justify-center mb-4">
+                        <i class="fas fa-users text-white text-xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-3">Group Study</h3>
+                    <p class="text-gray-600 text-sm">Share quizzes, compete with friends, study together via WhatsApp integration.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA & Footer -->
+    <footer class="bg-gray-900 text-white">
+        <div class="max-w-7xl mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="gradient-bg w-12 h-12 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-book-open text-white text-xl"></i>
+                        </div>
+                        <h2 class="text-2xl font-bold">SmartBooks<span class="text-purple-400">AI</span></h2>
+                    </div>
+                    <p class="text-gray-400 mb-6">Making quality education accessible to every African child through AI technology.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700">
+                            <i class="fab fa-x"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-gray-700">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Supported Countries</h3>
+                    <div class="grid grid-cols-2 gap-3">
+                        <div class="flex items-center gap-2">
+                            <span class="flag-icon">🇳🇬</span>
+                            <span>Nigeria</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="flag-icon">🇰🇪</span>
+                            <span>Kenya</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="flag-icon">🇬🇭</span>
+                            <span>Ghana</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="flag-icon">🇷🇼</span>
+                            <span>Rwanda</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="flag-icon">🇹🇿</span>
+                            <span>Tanzania</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="flag-icon">🇺🇬</span>
+                            <span>Uganda</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-6">Ready to Start Learning?</h3>
+                    <p class="text-gray-400 mb-6">Free for students. Available on any device with a browser.</p>
+                    <button id="final-cta" class="gradient-bg text-white px-8 py-3 rounded-lg font-semibold hover:shadow-lg transition w-full">
+                        <i class="fas fa-rocket mr-2"></i> Launch SmartBooks AI Now
+                    </button>
+                    <p class="text-gray-500 text-sm mt-4 text-center">No download required • Works on low-end phones</p>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+                <p>© 2025 SmartBooks AI. Designed for African youth. Partnered with UNESCO, UNICEF EduTech, and African Ministries of Education.</p>
+                <p class="mt-2">Contact: <span class="text-blue-400">info@smartbooksai.africa</span> | WhatsApp: +256755432091</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Interactive paragraph selection
+            const paragraphs = document.querySelectorAll('.paragraph-select');
+            paragraphs.forEach(p => {
+                p.addEventListener('click', function() {
+                    // Remove selection from all
+                    paragraphs.forEach(item => item.classList.remove('border-blue-500', 'bg-blue-50'));
+                    // Add to clicked
+                    this.classList.add('border-blue-500', 'bg-blue-50');
+                    this.classList.add('tap-highlight');
+                    
+                    // Show AI response
+                    const responseBox = document.getElementById('ai-response-demo');
+                    responseBox.innerHTML = `
+                        <div class="flex items-start gap-3 mb-4">
+                            <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mt-1">
+                                <i class="fas fa-robot text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium mb-1">AI Tutor</p>
+                                <p class="text-gray-300">Great! You selected a paragraph about <strong>${this.id === 'paragraph-1' ? 'fractions basics' : this.id === 'paragraph-2' ? 'adding fractions' : 'mixed numbers'}</strong>. What would you like to know?</p>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-2 gap-3 mt-6">
+                            <button class="ai-quick-btn bg-blue-800 hover:bg-blue-700 p-3 rounded-lg text-sm transition flex items-center justify-center gap-2">
+                                <i class="fas fa-lightbulb"></i> Explain Simply
+                            </button>
+                            <button class="ai-quick-btn bg-purple-800 hover:bg-purple-700 p-3 rounded-lg text-sm transition flex items-center justify-center gap-2">
+                                <i class="fas fa-list-ol"></i> Give Example
+                            </button>
+                            <button class="ai-quick-btn bg-green-800 hover:bg-green-700 p-3 rounded-lg text-sm transition flex items-center justify-center gap-2">
+                                <i class="fas fa-question-circle"></i> Quiz Me
+                            </button>
+                            <button id="voice-demo-btn" class="ai-quick-btn bg-red-800 hover:bg-red-700 p-3 rounded-lg text-sm transition flex items-center justify-center gap-2">
+                                <i class="fas fa-microphone"></i> Voice Ask
+                            </button>
+                        </div>
+                    `;
+                    
+                    // Remove animation after it plays
+                    setTimeout(() => {
+                        this.classList.remove('tap-highlight');
+                    }, 1000);
+                });
+            });
+            
+            // Voice demo button
+            document.addEventListener('click', function(e) {
+                if (e.target.closest('#voice-demo-btn')) {
+                    const btn = e.target.closest('#voice-demo-btn');
+                    btn.innerHTML = '<i class="fas fa-microphone-alt"></i> Listening...';
+                    btn.classList.add('voice-listening');
+                    
+                    // Simulate voice interaction
+                    setTimeout(() => {
+                        btn.innerHTML = '<i class="fas fa-microphone"></i> Voice Ask';
+                        btn.classList.remove('voice-listening');
+                        
+                        const responseBox = document.getElementById('ai-response-demo');
+                        responseBox.innerHTML = `
+                            <div class="flex items-start gap-3 mb-4">
+                                <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mt-1">
+                                    <i class="fas fa-robot text-xs"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium mb-1">AI Tutor</p>
+                                    <p class="text-gray-300">You asked: <em>"What is a fraction?"</em></p>
+                                    <p class="text-gray-300 mt-2">A fraction is like sharing a cake! If you have 1 cake and share it with 3 friends equally, each gets <strong>1/3</strong> of the cake. The top number (1) is what you get, the bottom number (3) is how many equal parts total.</p>
+                                </div>
+                            </div>
+                            <div class="bg-gray-700 rounded-lg p-4 mt-4">
+                                <p class="text-sm text-gray-300"><i class="fas fa-volume-up mr-2"></i> <strong>Voice reply:</strong> "Imagine you have one chapati..."</p>
+                            </div>
+                        `;
+                    }, 2000);
+                }
+                
+                // Quick action buttons
+                if (e.target.closest('.ai-quick-btn') && !e.target.closest('#voice-demo-btn')) {
+                    const btn = e.target.closest('.ai-quick-btn');
+                    const action = btn.textContent.trim();
+                    
+                    const responses = {
+                        'Explain Simply': 'A fraction is just a part of something whole. Like if you break a pencil into 4 equal pieces, each piece is 1/4 of the pencil.',
+                        'Give Example': 'Example: You have 8 oranges. You give 3 to your friend. You gave away 3/8 of the oranges. You have 5/8 left.',
+                        'Quiz Me': 'Quiz: What is 1/4 + 2/4? (Answer: 3/4). What fraction of the day is 6 hours? (Answer: 1/4). Ready for more?'
+                    };
+                    
+                    const responseBox = document.getElementById('ai-response-demo');
+                    responseBox.innerHTML = `
+                        <div class="flex items-start gap-3 mb-4">
+                            <div class="w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center mt-1">
+                                <i class="fas fa-robot text-xs"></i>
+                            </div>
+                            <div>
+                                <p class="font-medium mb-1">AI Tutor</p>
+                                <p class="text-gray-300">${responses[action]}</p>
+                                ${action === 'Quiz Me' ? '<button class="mt-4 px-4 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg text-sm">Show 5 More Questions →</button>' : ''}
+                            </div>
+                        </div>
+                    `;
+                }
+            });
+            
+            // Grade tabs
+            const gradeTabs = document.querySelectorAll('.grade-tab');
+            gradeTabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    gradeTabs.forEach(t => {
+                        t.classList.remove('bg-blue-100', 'text-blue-700', 'border-blue-200');
+                        t.classList.add('bg-gray-100', 'text-gray-700', 'hover:bg-blue-50');
+                    });
+                    this.classList.add('bg-blue-100', 'text-blue-700', 'border-blue-200');
+                    this.classList.remove('bg-gray-100', 'text-gray-700', 'hover:bg-blue-50');
+                });
+            });
+            
+            // Subject cards
+            const subjectCards = document.querySelectorAll('.subject-card');
+            subjectCards.forEach(card => {
+                card.addEventListener('click', function() {
+                    alert('Opening ' + this.querySelector('h3').textContent + ' textbooks...');
+                });
+            });
+            
+            // CTA buttons
+            document.getElementById('get-started-btn').addEventListener('click', function() {
+                alert('Launching SmartBooks AI... Redirecting to textbook selection.');
+            });
+            
+            document.getElementById('final-cta').addEventListener('click', function() {
+                alert('🚀 Launching SmartBooks AI! Opening in full screen mode...');
+            });
+            
+            // Language selector
+            document.getElementById('lang-btn').addEventListener('click', function() {
+                const langModal = document.createElement('div');
+                langModal.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
+                langModal.innerHTML = `
+                    <div class="bg-white rounded-2xl p-8 max-w-md w-full mx-4">
+                        <h3 class="text-xl font-bold mb-6">Choose Language</h3>
+                        <div class="space-y-3">
+                            <button class="lang-option w-full p-4 rounded-lg border hover:bg-blue-50 text-left flex items-center gap-3">
+                                <span class="text-2xl">🇬🇧</span>
+                                <div>
+                                    <div class="font-medium">English</div>
+                                    <div class="text-sm text-gray-600">Primary language</div>
+                                </div>
+                            </button>
+                            <button class="lang-option w-full p-4 rounded-lg border hover:bg-blue-50 text-left flex items-center gap-3">
+                                <span class="text-2xl">🇫🇷</span>
+                                <div>
+                                    <div class="font-medium">Français</div>
+                                    <div class="text-sm text-gray-600">French</div>
+                                </div>
+                            </button>
+                            <button class="lang-option w-full p-4 rounded-lg border hover:bg-blue-50 text-left flex items-center gap-3">
+                                <span class="text-2xl">🇹🇿</span>
+                                <div>
+                                    <div class="font-medium">Kiswahili</div>
+                                    <div class="text-sm text-gray-600">Swahili</div>
+                                </div>
+                            </button>
+                            <button class="lang-option w-full p-4 rounded-lg border hover:bg-blue-50 text-left flex items-center gap-3">
+                                <span class="text-2xl">🇳🇬</span>
+                                <div>
+                                    <div class="font-medium">Hausa</div>
+                                    <div class="text-sm text-gray-600">Northern Nigeria</div>
+                                </div>
+                            </button>
+                        </div>
+                        <div class="mt-8 flex justify-end">
+                            <button id="close-lang" class="px-6 py-2 bg-gray-200 rounded-lg">Close</button>
+                        </div>
+                    </div>
+                `;
+                document.body.appendChild(langModal);
+                
+                // Close modal
+                document.getElementById('close-lang').addEventListener('click', function() {
+                    document.body.removeChild(langModal);
+                });
+                
+                // Language selection
+                langModal.querySelectorAll('.lang-option').forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        const lang = this.querySelector('.font-medium').textContent;
+                        document.getElementById('lang-btn').innerHTML = `<i class="fas fa-globe-africa"></i> ${lang} <i class="fas fa-chevron-down text-xs"></i>`;
+                        document.body.removeChild(langModal);
+                        alert(`Language changed to ${lang}. AI tutor will now respond in this language as allan adding luganda soon.`);
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>
